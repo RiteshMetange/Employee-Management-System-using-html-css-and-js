@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management System</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+  <img class="background" src="https://assets-site.staticpipefy.com/production/wp-content/uploads/2022/09/employee-management-scaled.jpg" alt="none">
+
+  <!-- heading and logo -->
+  <div class="container">
+    <div id="items-0"><img src="https://www.thermaxglobal.com/wp-content/themes/thermax/img/common_svg/logo-red.svg" width="80px" alt="TMX Global"> </div>
+</div>
+  </div>
+  <!-- end -->
+
+  <!-- form starts here -->
+  <h1>Employee Management System</h1>
+  <div class="" id="con1">
+    <div class="box1" id="b1">
+      <form id="myForm">
+        <div class="form-group">
+          <label class="form-label" for="Name">Name</label>
+          <input class="form-input" type="text" id="Name" name="Name" placeholder="Enter Name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="Emp_ID">Emp_ID</label>
+          <input class="form-input" type="number" min="1" id="Emp_ID" name="Emp_ID" placeholder="Enter Employee ID "
+            required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="Department">Department</label>
+          <input class="form-input" type="text" id="Department" name="Department" placeholder="Enter Department"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="Phone_no">Phone_no</label>
+          <input class="form-input" type="number" min="1" id="Phone_no" name="Phone_no" placeholder="Enter Phone_no"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="Email_ID">Email_ID</label>
+          <input class="form-input" type="email" id="Email_ID" placeholder="Enter Email_ID" required>
+        </div>
+
+        <button type="submit" id="submit">SUBMIT</button>
+        <button type="reset" id="reset">CLEAR</button>
+
+      </form>
+    </div>
+  </div>
+  <!-- form ends here -->
+
+  <div class="flex-container">
+    <div class="flex-item" id="time-date">
+  <script>
+ 
+ function updateTimeDate() {
+  var now = new Date();
+
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var amPm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12 || 12;
+
+  var month = now.getMonth() + 1;
+  var day = now.getDate();
+  var year = now.getFullYear();
+
+  var timeDateStr = " Time: " + hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds) + ' ' + amPm + ' Date: ' + day + '-' + month + '-' + year;
+  document.getElementById('time-date').textContent = timeDateStr;
+}
+
+updateTimeDate();
+setInterval(updateTimeDate, 1000);
+  </script>
+   </div>
+  </div>
+
+
+  <div class="main">
+    <marquee class="marq"
+              scrollamount="10"
+             behavior=scroll
+             direction="right">
+        Employee Details
+    </marquee>
+</div>
+
+  <!-- datatable starts here -->
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Emp_ID</th>
+        <th>Department</th>
+        <th>Phone_No</th>
+        <th>Email_ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- The table data will be dynamically added here -->
+    </tbody>
+  </table>
+
+  <!-- table ends here -->
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var Name = document.getElementById('Name').value;
+      var Emp_ID = document.getElementById('Emp_ID').value;
+      var Department = document.getElementById('Department').value;
+      var Phone_no = document.getElementById('Phone_no').value;
+      var Email_ID = document.getElementById('Email_ID').value;
+
+      var table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+      var row = table.insertRow();
+
+      row.innerHTML =
+        '<td>' + Name + '</td>' +
+        '<td>' + Emp_ID + '</td>' +
+        '<td>' + Department + '</td>' +
+        '<td>' + Phone_no + '</td>' +
+        '<td>' + Email_ID + '</td>';
+    });
+
+  </script>
+
+
+
+
+
+</body>
+</html>
